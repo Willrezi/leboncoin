@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import Home from "./containers/Home";
-import SignUp from "./containers/SignUp";
 import Header from "./components/Header";
+import SignUp from "./containers/SignUp";
 import LogIn from "./containers/LogIn";
 
 import "./App.css";
@@ -12,9 +12,9 @@ import "./App.css";
 class App extends Component {
   state = {
     user: {
-      token: Cookies.get("token") || "",
-      username: Cookies.get("username") || "",
-      _id: Cookies.get("_id") || ""
+      token: Cookies.get("token") || null,
+      username: Cookies.get("username") || null,
+      _id: Cookies.get("_id") || null
     }
   };
 
@@ -32,9 +32,9 @@ class App extends Component {
     Cookies.remove("_id");
     this.setState({
       user: {
-        token: "",
-        username: "",
-        _id: ""
+        token: null,
+        username: null,
+        _id: null
       }
     });
   };

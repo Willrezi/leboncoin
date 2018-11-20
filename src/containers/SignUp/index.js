@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import "./style.css";
 
@@ -13,8 +13,7 @@ class SignUp extends Component {
       .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
         email: this.state.email,
         username: this.state.username,
-        password: this.state.password,
-        confirmedPassword: this.state.confirmedPassword
+        password: this.state.password
       })
       .then(response => {
         console.log(response.data);
@@ -26,7 +25,6 @@ class SignUp extends Component {
         this.props.history.push("/");
       });
     event.preventDefault();
-    console.log(this.props.logIn);
   };
 
   render() {
@@ -39,7 +37,7 @@ class SignUp extends Component {
               <label>Pseudo</label>
               <input
                 type="text"
-                placeholder=""
+                required
                 onChange={event => {
                   this.setState({ username: event.target.value });
                 }}
@@ -49,8 +47,8 @@ class SignUp extends Component {
             <div className="sign-up-input">
               <label>Adresse email</label>
               <input
-                type="text"
-                placeholder=""
+                type="email"
+                required
                 onChange={event => {
                   this.setState({ email: event.target.value });
                 }}
@@ -63,7 +61,7 @@ class SignUp extends Component {
                 <label>Mot de passe</label>
                 <input
                   type="password"
-                  placeholder=""
+                  required
                   onChange={event => {
                     this.setState({ password: event.target.value });
                   }}
@@ -75,7 +73,7 @@ class SignUp extends Component {
                 <label>Confirmer le mot de passe</label>
                 <input
                   type="password"
-                  placeholder=""
+                  required
                   onChange={event => {
                     this.setState({
                       confirmedPassword: event.target.value
@@ -86,7 +84,7 @@ class SignUp extends Component {
               </div>
             </div>
             <div className="sign-up-checkbox">
-              <input type="checkbox" />
+              <input type="checkbox" required />
               <label>"J'accepte les Conditions Générales de Vente"</label>
             </div>
             <button className="sign-up-button" type="submit">

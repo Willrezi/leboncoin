@@ -19,6 +19,14 @@
   width: 50%;
 }
 
+.login-input {
+  margin-bottom: 20px;
+}
+
+.login-password {
+  margin-bottom: 20px;
+}
+
 .login-button {
   height: 40px;
   background-color: #5183d0;
@@ -37,4 +45,6 @@
   background-color: white;
   color: #5183d0;
   width: 510px;
+  border-color: #5183d0;
+  font-size: 16px;
 }

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import axios from "axios";
@@ -22,6 +22,7 @@ class LogIn extends Component {
           username: response.data.account.username,
           _id: response.data._id
         });
+        this.props.history.push("/");
       });
     event.preventDefault();
   };
@@ -34,8 +35,9 @@ class LogIn extends Component {
           <form onSubmit={this.onSubmit}>
             <label>Adresse email</label>
             <input
-              type="text"
-              placeholder=""
+              className="login-input"
+              type="email"
+              required
               onChange={event => {
                 this.setState({ email: event.target.value });
               }}
@@ -43,8 +45,9 @@ class LogIn extends Component {
             />
             <label>Mot de passe</label>
             <input
+              className="login-password"
               type="password"
-              placeholder=""
+              required
               onChange={event => {
                 this.setState({ password: event.target.value });
               }}

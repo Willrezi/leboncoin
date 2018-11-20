@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { withRouter } from "react-router-dom";
 import "./style.css";
 import logoLeboncoin from "../../assets/logo.svg";
 
@@ -21,12 +22,18 @@ class Header extends Component {
               <ul>
                 <li
                   onClick={() => {
-                    this.props.history.push("sign-up");
+                    this.props.history.push("/sign_up");
                   }}
                 >
                   Créer un compte
                 </li>
-                <li>Se connecter</li>
+                <li
+                  onClick={() => {
+                    this.props.history.push("/log_in");
+                  }}
+                >
+                  Se connecter
+                </li>
               </ul>
             </div>
           </div>
@@ -36,4 +43,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
