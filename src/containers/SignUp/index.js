@@ -6,25 +6,35 @@ class SignUp extends Component {
   state = {
     email: "",
     username: "",
-    password: ""
+    password: "",
+    confirmedPassword: "",
+    message: null
   };
   onSubmit = event => {
-    axios
-      .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
-        email: this.state.email,
-        username: this.state.username,
-        password: this.state.password
-      })
-      .then(response => {
-        console.log(response.data);
-        this.props.logIn({
-          token: response.data.token,
-          username: response.data.account.username,
-          _id: response.data._id
+    if (this.state.password === this.state.confirmedPassword) {
+      axios
+        .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
+          email: this.state.email,
+          username: this.state.username,
+          password: this.state.password
+        })
+        .then(response => {
+          console.log(response.data);
+          this.props.logIn({
+            token: response.data.token,
+            username: response.data.account.username,
+            _id: response.data._id
+          });
+          this.props.history.push("/");
         });
-        this.props.history.push("/");
-      });
-    event.preventDefault();
+      event.preventDefault();
+    } else {
+      alert("Les mots des passes ne correspondent pas");
+      //   this.setState({
+      //     message: "les mots de passe ne sont pas identiques"
+      //   });
+      event.preventDefault();
+    }
   };
 
   render() {
@@ -82,6 +92,7 @@ class SignUp extends Component {
                   value={this.state.confirmedPassword}
                 />
               </div>
+              <div className="messageerror">{this.state.message}</div>
             </div>
             <div className="sign-up-checkbox">
               <input type="checkbox" required />
