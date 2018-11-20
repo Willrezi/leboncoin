@@ -2,15 +2,60 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 
+import Home from "./containers/Home";
+import SignUp from "./containers/SignUp";
+import LogIn from "./containers/LogIn";
+import Header from "./components/Header";
+
 import "./App.css";
 
 class App extends Component {
+  state = {
+    user: {
+      token: Cookies.get("token") || "",
+      username: Cookies.get("username") || "",
+      _id: Cookies.get("_id") || ""
+    }
+  };
+
+  logIn = user => {
+    Cookies.set("token", user.token);
+    Cookies.set("username", user.username);
+    Cookies.set("_id", user._id);
+
+    this.setState(user);
+  };
+
+  logOut = () => {
+    Cookies.remove("token");
+    Cookies.remove("username");
+    Cookies.remove("_id");
+    this.setState({
+      user: {
+        token: "",
+        username: "",
+        _id: ""
+      }
+    });
+  };
+
   render() {
+    const { user } = this.state;
     return (
       <Router>
         <Fragment>
-          <Route exact path="/" />
-          <Route path="/sign-up" />
+          <Header />
+          <Route
+            exact
+            path="/"
+            render={props => <Home {...props} user={user} />}
+          />
+          <Route
+            path="/sign-up"
+            render={props => (
+              <SignUp {...props} user={user} logIn={this.logIn} />
+            )}
+          />
         </Fragment>
       </Router>
     );
