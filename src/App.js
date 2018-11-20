@@ -4,8 +4,8 @@ import Cookies from "js-cookie";
 
 import Home from "./containers/Home";
 import SignUp from "./containers/SignUp";
-import LogIn from "./containers/LogIn";
 import Header from "./components/Header";
+import LogIn from "./containers/LogIn";
 
 import "./App.css";
 
@@ -23,7 +23,7 @@ class App extends Component {
     Cookies.set("username", user.username);
     Cookies.set("_id", user._id);
 
-    this.setState(user);
+    this.setState({ user: user });
   };
 
   logOut = () => {
@@ -51,9 +51,15 @@ class App extends Component {
             render={props => <Home {...props} user={user} />}
           />
           <Route
-            path="/sign-up"
+            path="/sign_up"
             render={props => (
               <SignUp {...props} user={user} logIn={this.logIn} />
+            )}
+          />
+          <Route
+            path="/log_in"
+            render={props => (
+              <LogIn {...props} user={user} logIn={this.logIn} />
             )}
           />
         </Fragment>

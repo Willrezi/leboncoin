@@ -3,7 +3,7 @@ import "./style.css";
 
 class Home extends Component {
   render() {
-    return <Fragment>This is the Home component</Fragment>;
+    return <Fragment>Home</Fragment>;
   }
 }
 

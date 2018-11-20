@@ -19,7 +19,13 @@ class Header extends Component {
               </div>
               <div className="menu-right" />
               <ul>
-                <li>Créer un compte</li>
+                <li
+                  onClick={() => {
+                    this.props.history.push("sign-up");
+                  }}
+                >
+                  Créer un compte
+                </li>
                 <li>Se connecter</li>
               </ul>
             </div>
