@@ -26,3 +26,7 @@
 .item-description {
   color: #7b99c8;
 }
+
+a {
+  text-decoration: none;
+}

@@ -71,7 +71,7 @@ class App extends Component {
             )}
           />
           <Route
-            path="/offer"
+            path="/offer/:id"
             render={props => (
               <Offer {...props} user={user} logIn={this.logIn} />
             )}

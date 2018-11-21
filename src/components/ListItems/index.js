@@ -13,6 +13,7 @@ class ListItems extends Component {
           label={this.props.list[i].title}
           price={this.props.list[i].price}
           pictures={this.props.list[i].pictures}
+          id={this.props.list[i]._id}
         />
       );
     }
