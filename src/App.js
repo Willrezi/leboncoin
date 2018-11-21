@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import SignUp from "./containers/SignUp";
 import LogIn from "./containers/LogIn";
 import Publish from "./containers/Publish";
+import Offer from "./containers/Offer";
 
 import "./App.css";
 
@@ -67,6 +68,12 @@ class App extends Component {
             path="/publish"
             render={props => (
               <Publish {...props} user={user} logIn={this.logIn} />
+            )}
+          />
+          <Route
+            path="/offer"
+            render={props => (
+              <Offer {...props} user={user} logIn={this.logIn} />
             )}
           />
         </Fragment>
