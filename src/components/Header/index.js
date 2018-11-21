@@ -15,7 +15,13 @@ class Header extends Component {
             <div className="menu">
               <div className="menu-left">
                 <ul>
-                  <li>Déposer une annonce</li>
+                  <li
+                    onClick={() => {
+                      this.props.history.push("/publish");
+                    }}
+                  >
+                    Déposer une annonce
+                  </li>
                   <li>Offres</li>
                 </ul>
               </div>

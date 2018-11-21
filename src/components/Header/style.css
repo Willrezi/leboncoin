@@ -24,6 +24,7 @@ header > div .logo {
   display: flex;
   align-items: center;
   padding-right: 30px;
+  margin-bottom: 0;
 }
 
 header > div .logo > img {

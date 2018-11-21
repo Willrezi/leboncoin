@@ -17,7 +17,7 @@ class LogIn extends Component {
       })
       .then(response => {
         console.log(response.data);
-        this.props.LogIn({
+        this.props.logIn({
           token: response.data.token,
           username: response.data.account.username,
           _id: response.data._id

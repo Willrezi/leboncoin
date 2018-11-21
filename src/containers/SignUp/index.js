@@ -34,8 +34,8 @@ class SignUp extends Component {
       this.setState({
         errorMessage: "les mots de passe ne sont pas identiques"
       });
-      event.preventDefault();
     }
+    event.preventDefault();
   };
 
   renderError() {
@@ -94,8 +94,8 @@ class SignUp extends Component {
               <div className="right">
                 <label>Confirmer le mot de passe</label>
                 <input
-                  id="confirmed-password"
-                  name="confirmed-password"
+                  id="confirmedPassword"
+                  name="confirmedPassword"
                   type="password"
                   required
                   onChange={event => {
@@ -106,12 +106,12 @@ class SignUp extends Component {
                   value={this.state.confirmedPassword}
                 />
               </div>
-              <div className="messageerror">{this.renderError}</div>
             </div>
             <div className="sign-up-checkbox">
               <input type="checkbox" required />
               <label>"J'accepte les Conditions Générales de Vente"</label>
             </div>
+            <div className="messageerror">{this.renderError()}</div>
             <button className="sign-up-button" type="submit">
               Créer mon Compte Personnel
             </button>
