@@ -1,0 +1,28 @@
+.item-container {
+  display: flex;
+  width: 720px;
+  border: 1px solid lightgray;
+  border-bottom: none;
+  background-color: white;
+}
+
+.item-container:last-child {
+  border-bottom: 1px solid lightgray;
+}
+
+.img-container {
+  width: 170px;
+  height: 170px;
+  border: 1px solid lightgray;
+  margin: 10px;
+  background-color: #fafafa;
+}
+
+.item-price {
+  color: #f36b36;
+  font-weight: bold;
+}
+
+.item-description {
+  color: #7b99c8;
+}
