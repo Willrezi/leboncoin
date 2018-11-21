@@ -34,9 +34,9 @@ class App extends Component {
     Cookies.remove("_id");
     this.setState({
       user: {
-        token: null,
-        username: null,
-        _id: null
+        token: "",
+        username: "",
+        _id: ""
       }
     });
   };
@@ -46,7 +46,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <Header />
+          <Header user={user} logOut={this.logOut} />
           <Route
             exact
             path="/"

@@ -4,6 +4,37 @@ import "./style.css";
 import logoLeboncoin from "../../assets/logo.svg";
 
 class Header extends Component {
+  onLogout = event => {
+    this.props.logOut();
+    this.props.history.push("/");
+    event.preventDefault();
+  };
+
+  renderNav() {
+    if (this.props.user._id) {
+      return (
+        <Fragment>
+          <li
+            onClick={() => {
+              this.props.history.push("/");
+            }}
+          >
+            {this.props.user.username}
+          </li>
+          <li onClick={this.onLogOut}>Déconnexion</li>
+        </Fragment>
+      );
+    }
+    return (
+      <Fragment>
+        <li onClick={() => this.props.history.push("/sign_up")}>
+          Créer un compte
+        </li>
+        <li onClick={() => this.props.history.push("/log_in")}>Se connecter</li>
+      </Fragment>
+    );
+  }
+
   render() {
     return (
       <Fragment>
@@ -26,22 +57,7 @@ class Header extends Component {
                 </ul>
               </div>
               <div className="menu-right">
-                <ul>
-                  <li
-                    onClick={() => {
-                      this.props.history.push("/sign_up");
-                    }}
-                  >
-                    Créer un compte
-                  </li>
-                  <li
-                    onClick={() => {
-                      this.props.history.push("/log_in");
-                    }}
-                  >
-                    Se connecter
-                  </li>
-                </ul>
+                <ul>{this.renderNav()}</ul>
               </div>
             </div>
           </div>
