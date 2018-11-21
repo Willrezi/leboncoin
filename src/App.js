@@ -6,6 +6,7 @@ import Home from "./containers/Home";
 import Header from "./components/Header";
 import SignUp from "./containers/SignUp";
 import LogIn from "./containers/LogIn";
+import Publish from "./containers/Publish";
 
 import "./App.css";
 
@@ -60,6 +61,12 @@ class App extends Component {
             path="/log_in"
             render={props => (
               <LogIn {...props} user={user} logIn={this.logIn} />
+            )}
+          />
+          <Route
+            path="/publish"
+            render={props => (
+              <Publish {...props} user={user} logIn={this.logIn} />
             )}
           />
         </Fragment>

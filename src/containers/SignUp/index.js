@@ -8,7 +8,8 @@ class SignUp extends Component {
     username: "",
     password: "",
     confirmedPassword: "",
-    message: null
+    errorMessage: "",
+    passwordIncorrect: false
   };
   onSubmit = event => {
     if (this.state.password === this.state.confirmedPassword) {
@@ -27,15 +28,23 @@ class SignUp extends Component {
           });
           this.props.history.push("/");
         });
-      event.preventDefault();
+      //   event.preventDefault();
     } else {
-      alert("Les mots des passes ne correspondent pas");
-      //   this.setState({
-      //     message: "les mots de passe ne sont pas identiques"
-      //   });
+      //   alert("Les mots des passes ne correspondent pas");
+      this.setState({
+        errorMessage: "les mots de passe ne sont pas identiques"
+      });
       event.preventDefault();
     }
   };
+
+  renderError() {
+    if (this.state.errorMessage) {
+      return <p>{this.state.errorMessage}</p>;
+    } else {
+      return null;
+    }
+  }
 
   render() {
     return (
@@ -68,8 +77,11 @@ class SignUp extends Component {
             <div className="sign-up-password">
               <div className="left">
                 {" "}
-                <label>Mot de passe</label>
+                <label htmlFor="password">Mot de passe</label>
+                {/* htmlFor doit correspondre à l'id */}
                 <input
+                  id="password"
+                  name="password"
                   type="password"
                   required
                   onChange={event => {
@@ -82,6 +94,8 @@ class SignUp extends Component {
               <div className="right">
                 <label>Confirmer le mot de passe</label>
                 <input
+                  id="confirmed-password"
+                  name="confirmed-password"
                   type="password"
                   required
                   onChange={event => {
@@ -92,7 +106,7 @@ class SignUp extends Component {
                   value={this.state.confirmedPassword}
                 />
               </div>
-              <div className="messageerror">{this.state.message}</div>
+              <div className="messageerror">{this.renderError}</div>
             </div>
             <div className="sign-up-checkbox">
               <input type="checkbox" required />

@@ -28,6 +28,7 @@ header > div .logo {
 
 header > div .logo > img {
   height: 20px;
+  margin-bottom: 0;
 }
 
 header > div .menu {
@@ -48,8 +49,7 @@ header > div .menu ul > li {
   cursor: pointer;
 }
 
-header a,
-header .menu-right li {
+header > div .menu-right ul > li {
   color: white;
   text-decoration: none;
   font-weight: 700;
@@ -57,7 +57,15 @@ header .menu-right li {
   text-transform: uppercase;
 }
 
-header .menu-right li {
+header > div .menu-left ul > li {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 60px;
+  text-transform: uppercase;
+}
+
+header .menu-right ul > li {
   border-left: 1px solid #ffffff;
   padding: 0 60px;
 }
