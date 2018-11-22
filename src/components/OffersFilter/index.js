@@ -8,8 +8,7 @@ class OffersFilter extends Component {
     priceMin: "",
     priceMax: "",
     sort: "price-desc" || "price-asc" || "date-desc" || "date-asc",
-    skip: "",
-    limit: ""
+    skip: ""
   };
 
   handleChange = event => {
