@@ -1,0 +1,62 @@
+.offers-filter-bg {
+  background-color: #e6e6e6;
+}
+
+.filter-container {
+  display: flex;
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.filter-form {
+  width: 720px;
+  margin: 20px 0;
+}
+
+.filter {
+  display: flex;
+}
+
+.filter-left {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  margin-right: 10px;
+}
+
+.filter-left input {
+  padding-left: 10px;
+}
+
+.filter-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 10px;
+}
+
+.filter-price {
+  margin-top: 20px;
+}
+
+.filter-price-left {
+  font-size: 12px;
+  margin-right: 30px;
+}
+.filter-price-right {
+  font-size: 12px;
+  margin: 0 10px;
+}
+
+.btn-search {
+  height: 40px;
+  margin-bottom: 20px;
+  background-color: #5183d0;
+  color: white;
+  border-radius: 3px;
+  border-color: none;
+}
+
+.select-filter {
+  height: 40px;
+}

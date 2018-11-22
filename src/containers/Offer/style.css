@@ -1,6 +1,6 @@
 .offer-bg-color {
   background-color: #fafafa;
-  /* height: 100vh; */
+  height: 100vh;
 }
 
 .offer-container {
@@ -57,6 +57,21 @@
   font-size: 15px;
   line-height: 18px;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+}
+
+.offer-username > p {
+  text-align: center;
+  padding-right: 60px;
+}
+
+.offer-username > i {
+  color: #f36b36;
+  margin-right: 20px;
+  transform: rotate(360deg);
 }
 
 .phone {
@@ -84,7 +99,7 @@
   text-align: center;
 }
 
-i {
+.phone > i {
   height: 36px;
   width: 36px;
   color: white;

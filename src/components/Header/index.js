@@ -4,10 +4,11 @@ import "./style.css";
 import logoLeboncoin from "../../assets/logo.svg";
 
 class Header extends Component {
-  onLogout = event => {
+  onLogOut = event => {
     this.props.logOut();
     this.props.history.push("/");
     event.preventDefault();
+    console.log(this.onLogout);
   };
 
   renderNav() {
@@ -53,7 +54,13 @@ class Header extends Component {
                   >
                     Déposer une annonce
                   </li>
-                  <li>Offres</li>
+                  <li
+                    onClick={() => {
+                      this.props.history.push("/");
+                    }}
+                  >
+                    Offres
+                  </li>
                 </ul>
               </div>
               <div className="menu-right">

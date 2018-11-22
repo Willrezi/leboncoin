@@ -14,9 +14,9 @@ import "./App.css";
 class App extends Component {
   state = {
     user: {
-      token: Cookies.get("token") || null,
-      username: Cookies.get("username") || null,
-      _id: Cookies.get("_id") || null
+      token: Cookies.get("token") || "",
+      username: Cookies.get("username") || "",
+      _id: Cookies.get("_id") || ""
     }
   };
 
@@ -39,6 +39,7 @@ class App extends Component {
         _id: ""
       }
     });
+    console.log(this.logOut);
   };
 
   render() {

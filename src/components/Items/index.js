@@ -5,7 +5,13 @@ import "./style.css";
 class Items extends Component {
   render() {
     return (
-      <Link to={{ pathname: "/offer/" + this.props.id }}>
+      <Link
+        to={{
+          pathname: "/offer/" + this.props.id,
+          name: this.props.name,
+          pictures: this.props.pictures
+        }}
+      >
         <div className="item-container">
           <img className="img-container" src={this.props.pictures} alt="" />
           <div>

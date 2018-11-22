@@ -9,10 +9,16 @@ class Publish extends Component {
     price: ""
   };
 
+  redirectToLoginPage = () => {
+    this.props.history.push("/log_in");
+  };
+
   handleChange = event => {
     const target = event.target;
     const name = target.name;
     const value = target.value;
+
+    // const { name, value } = event.target;
 
     this.setState({
       [name]: value
@@ -20,27 +26,32 @@ class Publish extends Component {
   };
 
   onSubmit = event => {
+    const { title, description, price } = this.state;
     event.preventDefault();
     console.log(this.state);
-    axios
-      .post(
-        "https://leboncoin-api.herokuapp.com/api/offer/publish",
-        {
-          title: this.state.title,
-          description: this.state.description,
-          price: Number(this.state.price)
-        },
-        {
-          headers: {
-            authorization: "Bearer " + this.props.user.token
+    if (!this.props.user.token) {
+      this.redirectToLoginPage();
+    } else {
+      axios
+        .post(
+          "https://leboncoin-api.herokuapp.com/api/offer/publish",
+          {
+            title: title,
+            description: description,
+            price: Number(price)
+          },
+          {
+            headers: {
+              authorization: "Bearer " + this.props.user.token
+            }
           }
-        }
-      )
-      .then(response => {
-        console.log(response.data);
+        )
+        .then(response => {
+          console.log(response.data);
 
-        this.props.history.push("/");
-      });
+          this.props.history.push("/");
+        });
+    }
   };
 
   render() {
