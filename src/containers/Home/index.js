@@ -6,7 +6,8 @@ import OffersFilter from "../../components/OffersFilter";
 
 class Home extends Component {
   state = {
-    offers: []
+    offers: [],
+    page: 1
   };
 
   updateOffersList = offers => {

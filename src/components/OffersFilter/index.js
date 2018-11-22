@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import "./style.css";
 
@@ -6,7 +6,10 @@ class OffersFilter extends Component {
   state = {
     title: "",
     priceMin: "",
-    priceMax: ""
+    priceMax: "",
+    sort: "price-desc" || "price-asc" || "date-desc" || "date-asc",
+    skip: "",
+    limit: ""
   };
 
   handleChange = event => {
@@ -18,15 +21,17 @@ class OffersFilter extends Component {
   };
 
   onSubmit = event => {
-    const { title, priceMin, priceMax } = this.state;
-
+    const { title, priceMin, priceMax, sort, skip, limit } = this.state;
     event.preventDefault();
     axios
       .get("https://leboncoin-api.herokuapp.com/api/offer", {
         params: {
           title: title,
           priceMin: priceMin,
-          priceMax: priceMax
+          priceMax: priceMax,
+          sort: sort,
+          skip: skip,
+          limit: limit
         }
       })
       .then(response => {
@@ -81,13 +86,14 @@ class OffersFilter extends Component {
                 <button className="btn-search">RECHERCHER</button>
                 <select
                   className="select-filter"
+                  name="sort"
                   value={this.state.value}
                   onChange={this.handleChange}
                 >
-                  <option>Tri : Plus récentes</option>
-                  <option>Tri : Plus anciennes</option>
-                  <option>Tri : Prix croissants</option>
-                  <option>Tri : Prix décroissants</option>
+                  <option value="date-desc">Tri : Plus récentes</option>
+                  <option value="date-asc">Tri : Plus anciennes</option>
+                  <option value="price-asc">Tri : Prix croissants</option>
+                  <option value="price-desc">Tri : Prix décroissants</option>
                 </select>
               </div>
             </div>

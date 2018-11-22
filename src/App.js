@@ -39,7 +39,6 @@ class App extends Component {
         _id: ""
       }
     });
-    console.log(this.logOut);
   };
 
   render() {

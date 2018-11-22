@@ -16,6 +16,7 @@ class ListItems extends Component {
           id={this.props.list[i]._id}
           name={this.props.list[i].creator.account.username}
           phone={this.props.list[i].creator.account.phone}
+          date={this.props.list[i].created}
         />
       );
     }
