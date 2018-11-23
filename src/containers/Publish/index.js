@@ -66,13 +66,6 @@ class Publish extends Component {
     }
   };
 
-  //   renderImportPicture = () => {
-  //     if (this.state.files.files < 3) {
-  //       return <span>Importer une photo</span>;
-  //     }
-  //     return null;
-  //   };
-
   render() {
     const filesArray = [];
     for (let i = 0; i < this.state.files.length; i++) {
@@ -136,8 +129,20 @@ class Publish extends Component {
                     multipleFiles={true} // `false si une seule image`
                     handleFiles={this.handleFiles}
                   >
-                    {/* <span>{this.renderImportPicture()}</span> */}
-                    <span>import</span>
+                    <div className="empty-picture-bloc">
+                      <div className="empty-picture">
+                        <p>Photo principale</p>
+                        <i className="fas fa-camera fa-3x" />
+                      </div>
+                      <div className="empty-picture">
+                        <p>Photo 2</p>
+                        <i className="fas fa-camera fa-3x" />
+                      </div>
+                      <div className="empty-picture">
+                        <p>Photo 3</p>
+                        <i className="fas fa-camera fa-3x" />
+                      </div>
+                    </div>
                   </ReactFileReader>
                   {filesArray}
                 </div>
