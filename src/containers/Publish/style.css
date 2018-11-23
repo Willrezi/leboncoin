@@ -64,3 +64,8 @@ textarea {
   color: white;
   font-size: 16px;
 }
+
+.import-picture {
+  height: 150px;
+  width: 150px;
+}

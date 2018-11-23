@@ -7,11 +7,17 @@ class Offer extends Component {
     offer: []
   };
 
-  renderImage(url) {
-    if (url) {
-      return <img src={this.props.location.pictures} alt="" />;
+  renderImage() {
+    if (this.state.offer.pictures[0]) {
+      return (
+        <img
+          className="img-offer"
+          src={this.state.offer.pictures[0].secure_url}
+          alt=""
+        />
+      );
     } else {
-      return <div className="img-offer">{null}</div>;
+      return <div className="img-offer">image</div>;
     }
   }
 
@@ -27,9 +33,7 @@ class Offer extends Component {
           <div className="offer-container">
             <div className="left-container">
               <div className="offer-card">
-                <div className="img-offer">
-                  {this.renderImage(this.props.location.pictures)}
-                </div>
+                <div className="img-offer">{this.renderImage()}</div>
                 <div className="offer-card-footer">
                   <h3 className="offer-title">{this.state.offer.title}</h3>
                   <span className="offer-price">

@@ -13,6 +13,7 @@ class Publish extends Component {
 
   handleFiles = files => {
     console.log(files);
+    console.log(this.state.files);
     const newFiles = [...this.state.files, ...files.base64];
     this.setState({
       files: newFiles
@@ -48,7 +49,8 @@ class Publish extends Component {
           {
             title: title,
             description: description,
-            price: Number(price)
+            price: Number(price),
+            files: this.state.files
           },
           {
             headers: {
@@ -64,13 +66,19 @@ class Publish extends Component {
     }
   };
 
+  //   renderImportPicture = () => {
+  //     if (this.state.files.files < 3) {
+  //       return <span>Importer une photo</span>;
+  //     }
+  //     return null;
+  //   };
+
   render() {
     const filesArray = [];
     for (let i = 0; i < this.state.files.length; i++) {
       filesArray.push(
         <img
-          width="250"
-          length="250"
+          className="import-picture"
           key={i}
           onClick={() => {
             // En cliquant sur l'image, le fichier sera supprimé
@@ -128,9 +136,8 @@ class Publish extends Component {
                     multipleFiles={true} // `false si une seule image`
                     handleFiles={this.handleFiles}
                   >
-                    <span>Photo 1</span>
-                    <span>Photo 2</span>
-                    <span>Photo 3</span>
+                    {/* <span>{this.renderImportPicture()}</span> */}
+                    <span>import</span>
                   </ReactFileReader>
                   {filesArray}
                 </div>

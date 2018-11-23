@@ -13,7 +13,7 @@
 .img-offer {
   height: 390px;
   width: 100%;
-  border: 1px solid lightgray;
+  /* object-fit: cover; */
   background-color: #d6d0d0;
 }
 
