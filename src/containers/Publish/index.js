@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import axios from "axios";
+import ReactFileReader from "react-file-reader";
 import "./style.css";
 
 class Publish extends Component {
   state = {
     title: "",
     description: "",
-    price: ""
+    price: "",
+    files: []
+  };
+
+  handleFiles = files => {
+    console.log(files);
+    const newFiles = [...this.state.files, ...files.base64];
+    this.setState({
+      files: newFiles
+    });
   };
 
   redirectToLoginPage = () => {
@@ -14,11 +24,11 @@ class Publish extends Component {
   };
 
   handleChange = event => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
+    // const target = event.target;
+    // const name = target.name;
+    // const value = target.value;
 
-    // const { name, value } = event.target;
+    const { name, value } = event.target;
 
     this.setState({
       [name]: value
@@ -55,6 +65,25 @@ class Publish extends Component {
   };
 
   render() {
+    const filesArray = [];
+    for (let i = 0; i < this.state.files.length; i++) {
+      filesArray.push(
+        <img
+          width="250"
+          length="250"
+          key={i}
+          onClick={() => {
+            // En cliquant sur l'image, le fichier sera supprimé
+            const newFiles = [...this.state.files];
+            newFiles.splice(i, 1);
+            this.setState({ files: newFiles });
+          }}
+          src={this.state.files[i]}
+          alt="Annonce"
+        />
+      );
+    }
+
     return (
       <div className="bg">
         <div className="publish-container">
@@ -91,6 +120,20 @@ class Publish extends Component {
                   value={this.state.price}
                   onChange={this.handleChange}
                 />
+                <label className="title">Photos</label>
+                <div>
+                  <ReactFileReader
+                    fileTypes={[".png", ".jpg", ".jpeg"]}
+                    base64={true}
+                    multipleFiles={true} // `false si une seule image`
+                    handleFiles={this.handleFiles}
+                  >
+                    <span>Photo 1</span>
+                    <span>Photo 2</span>
+                    <span>Photo 3</span>
+                  </ReactFileReader>
+                  {filesArray}
+                </div>
               </div>
             </div>
 
