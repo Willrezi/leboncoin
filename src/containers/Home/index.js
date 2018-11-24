@@ -22,12 +22,15 @@ class Home extends Component {
   };
 
   updateSearchParams = (newSearchParams, callbackFunction) => {
-    this.setState({
-      searchParams: {
-        ...this.state.searchParams, // Je récupère toutes les anciennes valeurs des paramètres de recherche
-        ...newSearchParams // J'écrase les anciennes valeurs avec les nouvelles valeurs
-      }
-    });
+    this.setState(
+      {
+        searchParams: {
+          ...this.state.searchParams, // Je récupère toutes les anciennes valeurs des paramètres de recherche
+          ...newSearchParams // J'écrase les anciennes valeurs avec les nouvelles valeurs
+        }
+      },
+      callbackFunction
+    );
   };
 
   getOffers = () => {
@@ -52,7 +55,11 @@ class Home extends Component {
           getOffers={this.getOffers}
         />
         <ListItems list={this.state.offers} />
-        <Pagination />
+        <Pagination
+          skip={this.state.searchParams.skip}
+          updateSearchParams={this.updateSearchParams}
+          getOffers={this.getOffers}
+        />
       </div>
     );
   }
