@@ -3,43 +3,23 @@ import axios from "axios";
 import "./style.css";
 
 class OffersFilter extends Component {
-  state = {
-    title: "",
-    priceMin: "",
-    priceMax: "",
-    sort: "",
-    skip: ""
-  };
-
   handleChange = event => {
     const { name, value } = event.target;
 
-    this.setState({
-      [name]: value
+    this.props.updateSearchParams({
+      [name]: value,
+      skip: 0
     });
   };
 
   onSubmit = event => {
-    const { title, priceMin, priceMax, sort, skip, limit } = this.state;
     event.preventDefault();
-    axios
-      .get("https://leboncoin-api.herokuapp.com/api/offer", {
-        params: {
-          title: title,
-          priceMin: priceMin,
-          priceMax: priceMax,
-          sort: sort,
-          skip: skip,
-          limit: limit
-        }
-      })
-      .then(response => {
-        this.props.updateOffersList(response.data);
-        console.log(response.data);
-      });
+    this.props.getOffers();
   };
 
   render() {
+    const { title, priceMin, priceMax, sort } = this.props.searchParams;
+
     return (
       <div className="offers-filter-bg">
         <div className="filter-container">
@@ -51,7 +31,7 @@ class OffersFilter extends Component {
                   name="title"
                   placeholder="Que recherchez-vous ?"
                   onChange={this.handleChange}
-                  value={this.state.title}
+                  value={title}
                 />
                 <div className="filter-price">
                   <label htmlFor="price">
@@ -63,7 +43,7 @@ class OffersFilter extends Component {
                     name="priceMin"
                     placeholder="Prix min"
                     onChange={this.handleChange}
-                    value={this.state.priceMin}
+                    value={priceMin}
                   />
 
                   <label htmlFor="price-max">
@@ -75,7 +55,7 @@ class OffersFilter extends Component {
                     name="priceMax"
                     placeholder="Prix max"
                     onChange={this.handleChange}
-                    value={this.state.priceMax}
+                    value={priceMax}
                   />
                 </div>
               </div>
@@ -86,7 +66,7 @@ class OffersFilter extends Component {
                 <select
                   className="select-filter"
                   name="sort"
-                  value={this.state.value}
+                  value={sort}
                   onChange={this.handleChange}
                 >
                   <option value="date-desc">Tri : Plus récentes</option>
