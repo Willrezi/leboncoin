@@ -28,7 +28,6 @@ class Publish extends Component {
     // const target = event.target;
     // const name = target.name;
     // const value = target.value;
-
     const { name, value } = event.target;
 
     this.setState({
@@ -68,6 +67,7 @@ class Publish extends Component {
 
   render() {
     const filesArray = [];
+
     for (let i = 0; i < this.state.files.length; i++) {
       filesArray.push(
         <img
@@ -83,6 +83,8 @@ class Publish extends Component {
           alt="Annonce"
         />
       );
+
+      console.log(this.state.files);
     }
 
     return (
@@ -132,14 +134,6 @@ class Publish extends Component {
                     <div className="empty-picture-bloc">
                       <div className="empty-picture">
                         <p>Photo principale</p>
-                        <i className="fas fa-camera fa-3x" />
-                      </div>
-                      <div className="empty-picture">
-                        <p>Photo 2</p>
-                        <i className="fas fa-camera fa-3x" />
-                      </div>
-                      <div className="empty-picture">
-                        <p>Photo 3</p>
                         <i className="fas fa-camera fa-3x" />
                       </div>
                     </div>
